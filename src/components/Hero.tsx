@@ -1,6 +1,7 @@
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
+import { motion } from "framer-motion";
+import MagneticButton from "./MagneticButton";
+import Scene3D from "./Scene3D";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -13,83 +14,119 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-mesh"
     >
-      <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
+      <Scene3D />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Hi, I'm{" "}
-            <span className="text-primary inline-block animate-glow-pulse">
-              Padmesh Bidaye
-            </span>
-          </h1>
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              Hi, I'm{" "}
+              <span className="text-gradient inline-block">
+                Padmesh Bidaye
+              </span>
+            </motion.h1>
+          </motion.div>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+          <motion.p 
+            className="text-xl md:text-2xl text-muted-foreground mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Computer Engineering Student
-          </p>
+          </motion.p>
           
-          <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto">
+          <motion.p 
+            className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             Building responsive web solutions and exploring innovative tech in software development, machine learning, and IoT
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-            <Button
+          <motion.div 
+            className="flex flex-wrap items-center justify-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <MagneticButton
               onClick={() => scrollToSection("projects")}
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground group"
             >
               View My Work
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            </MagneticButton>
             
-            <Button
+            <MagneticButton
               onClick={() => scrollToSection("contact")}
               variant="outline"
               size="lg"
-              className="border-primary text-primary hover:bg-primary/10"
+              className="glass-card border-primary text-primary hover:bg-primary/10"
             >
               Get In Touch
-            </Button>
-          </div>
+            </MagneticButton>
+          </motion.div>
 
-          <div className="flex items-center justify-center gap-6">
-            <a
+          <motion.div 
+            className="flex items-center justify-center gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            <motion.a
               href="https://github.com/PadmeshBidaye"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="GitHub Profile"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
             >
               <Github className="h-6 w-6" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="https://linkedin.com/in/padmesh-bidaye"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="LinkedIn Profile"
+              whileHover={{ scale: 1.2, rotate: -5 }}
+              whileTap={{ scale: 0.9 }}
             >
               <Linkedin className="h-6 w-6" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="mailto:pbidaye003@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
             >
               <Mail className="h-6 w-6" />
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+      <motion.div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
         <button
           onClick={() => scrollToSection("about")}
           className="text-muted-foreground hover:text-primary transition-colors"
@@ -107,7 +144,7 @@ const Hero = () => {
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 };
