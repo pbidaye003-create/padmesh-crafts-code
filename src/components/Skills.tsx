@@ -20,16 +20,6 @@ const Skills = () => {
       category: "Web Development",
       skills: [
         { name: "HTML/CSS", level: 90 },
-        { name: "Responsive Design", level: 0 },
-        { name: "JavaScript Frameworks", level: 0 },
-      ],
-    },
-    {
-      category: "Technologies & Concepts",
-      skills: [
-        { name: "IoT", level: 10 },
-        { name: "Machine Learning", level: 0 },
-        { name: "Software Development", level: 0 },
       ],
     },
   ];
