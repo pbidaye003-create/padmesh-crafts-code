@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Float, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -69,24 +69,30 @@ function Particles() {
 
 const Scene3D = () => {
   return (
-    <div className="absolute inset-0 z-0">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} color="#00ff88" intensity={0.5} />
-        
-        <FloatingShape position={[-2, 1, 0]} color="#00d9ff" />
-        <FloatingShape position={[2, -1, -1]} color="#00ff88" />
-        <FloatingShape position={[0, 2, -2]} color="#0099ff" />
-        
-        <Particles />
-        
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          autoRotate
-          autoRotateSpeed={0.5}
-        />
+    <div className="absolute inset-0 z-0 pointer-events-none">
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 75 }}
+        gl={{ alpha: true, antialias: true }}
+        dpr={[1, 2]}
+      >
+        <Suspense fallback={null}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} intensity={1} />
+          <pointLight position={[-10, -10, -10]} color="#00ff88" intensity={0.5} />
+          
+          <FloatingShape position={[-2, 1, 0]} color="#00d9ff" />
+          <FloatingShape position={[2, -1, -1]} color="#00ff88" />
+          <FloatingShape position={[0, 2, -2]} color="#0099ff" />
+          
+          <Particles />
+          
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            autoRotate
+            autoRotateSpeed={0.5}
+          />
+        </Suspense>
       </Canvas>
     </div>
   );
