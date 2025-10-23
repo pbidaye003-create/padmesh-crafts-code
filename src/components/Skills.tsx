@@ -13,23 +13,23 @@ const Skills = () => {
       skills: [
         { name: "C", level: 85 },
         { name: "C++", level: 80 },
-        { name: "JavaScript", level: 75 },
+        { name: "JavaScript", level: 15 },
       ],
     },
     {
       category: "Web Development",
       skills: [
         { name: "HTML/CSS", level: 90 },
-        { name: "Responsive Design", level: 85 },
-        { name: "JavaScript Frameworks", level: 70 },
+        { name: "Responsive Design", level: 0 },
+        { name: "JavaScript Frameworks", level: 0 },
       ],
     },
     {
       category: "Technologies & Concepts",
       skills: [
-        { name: "IoT", level: 65 },
-        { name: "Machine Learning", level: 60 },
-        { name: "Software Development", level: 75 },
+        { name: "IoT", level: 10 },
+        { name: "Machine Learning", level: 0 },
+        { name: "Software Development", level: 0 },
       ],
     },
   ];

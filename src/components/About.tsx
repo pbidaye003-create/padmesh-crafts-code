@@ -87,6 +87,9 @@ const About = () => {
                   <p className="text-sm text-muted-foreground mt-2">
                     2023–2025 batch
                   </p>
+                  <p className="text-muted-foreground mt-3">
+                    Completed schooling from St. Xavier's High School
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
