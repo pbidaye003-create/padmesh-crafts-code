@@ -47,6 +47,10 @@ const Skills = () => {
     <section id="skills" className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-30" />
       
+      {/* Decorative Elements */}
+      <div className="absolute top-10 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-[120px] animate-float" />
+      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '1.5s' }} />
+      
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -68,7 +72,7 @@ const Skills = () => {
           >
             {skillCategories.map((category, catIndex) => (
               <motion.div key={catIndex} variants={itemVariants}>
-                <Card className="glass-card border-border/50 h-full hover:border-primary/30 transition-all duration-300">
+                <Card className="glass-strong border-primary/20 h-full hover:border-primary/50 transition-all duration-300 group">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-6 text-gradient">
                       {category.category}
@@ -97,9 +101,9 @@ const Skills = () => {
                               {skill.level}%
                             </motion.span>
                           </div>
-                          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden backdrop-blur-sm">
+                          <div className="w-full bg-muted/50 rounded-full h-2.5 overflow-hidden border border-border/30">
                             <motion.div
-                              className="h-full rounded-full bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-gradient-shift"
+                              className="h-full rounded-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_rgba(96,212,237,0.5)]"
                               initial={{ width: 0 }}
                               animate={isInView ? { width: `${skill.level}%` } : {}}
                               transition={{

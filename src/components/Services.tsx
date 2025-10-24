@@ -64,6 +64,10 @@ const Services = () => {
     <section id="services" className="py-20 bg-background relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-50" />
       
+      {/* Decorative Elements */}
+      <div className="absolute top-40 left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] animate-glow-pulse" />
+      <div className="absolute bottom-40 right-20 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] animate-glow-pulse" style={{ animationDelay: '2s' }} />
+      
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -76,7 +80,7 @@ const Services = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6" />
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Offering professional web development and technical solutions to bring your ideas to life
+              Transforming ideas into exceptional digital experiences
             </p>
           </motion.div>
 
@@ -88,19 +92,20 @@ const Services = () => {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="glass-card border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group h-full">
-                  <CardHeader>
+                <Card className="glass-strong border-primary/20 hover:border-primary/50 transition-all duration-300 group h-full relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <CardHeader className="relative z-10">
                     <motion.div
-                      className={`w-16 h-16 ${service.bgColor} rounded-lg flex items-center justify-center mb-4`}
+                      className={`w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center mb-4 shadow-lg`}
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
                       <service.icon className={`h-8 w-8 ${service.color}`} />
                     </motion.div>
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">{service.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base leading-relaxed">
+                  <CardContent className="relative z-10">
+                    <CardDescription className="text-base leading-relaxed text-foreground/80">
                       {service.description}
                     </CardDescription>
                   </CardContent>

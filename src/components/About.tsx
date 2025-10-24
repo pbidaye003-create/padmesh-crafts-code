@@ -29,7 +29,11 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 gradient-mesh opacity-50" />
+      <div className="absolute inset-0 gradient-mesh opacity-30" />
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-[120px] animate-float" />
+      <div className="absolute bottom-20 left-10 w-72 h-72 bg-secondary/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '1s' }} />
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <div className="max-w-4xl mx-auto">
@@ -49,7 +53,7 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="mb-12 glass-card border-border/50 hover:border-primary/30 transition-all duration-300">
+            <Card className="mb-12 glass-strong border-primary/20 hover:border-primary/40 transition-all duration-300">
               <CardContent className="p-8">
                 <p className="text-lg text-foreground/90 leading-relaxed mb-6">
                   I'm a Computer Engineering student with interests in software development, 
@@ -71,16 +75,17 @@ const About = () => {
             animate={isInView ? "visible" : "hidden"}
           >
             <motion.div variants={itemVariants}>
-              <Card className="glass-card border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group h-full">
-                <CardContent className="p-6 text-center">
+              <Card className="glass-strong border-primary/20 hover:border-primary/50 transition-all duration-300 group h-full relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <CardContent className="p-6 text-center relative z-10">
                   <motion.div
-                    className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
                     <GraduationCap className="h-8 w-8 text-primary" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2">Education</h3>
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Education</h3>
                   <p className="text-muted-foreground">
                     12th Pass from T.P. Bhatia College of Science
                   </p>
@@ -95,16 +100,17 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Card className="glass-card border-border/50 hover:border-secondary/50 transition-all duration-300 hover:shadow-lg hover:shadow-secondary/10 group h-full">
-                <CardContent className="p-6 text-center">
+              <Card className="glass-strong border-secondary/20 hover:border-secondary/50 transition-all duration-300 group h-full relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <CardContent className="p-6 text-center relative z-10">
                   <motion.div
-                    className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
                     whileHover={{ scale: 1.1, rotate: -360 }}
                     transition={{ duration: 0.5 }}
                   >
                     <Code className="h-8 w-8 text-secondary" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2">Development</h3>
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-secondary transition-colors">Development</h3>
                   <p className="text-muted-foreground">
                     Building responsive websites and web applications
                   </p>
@@ -116,16 +122,17 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Card className="glass-card border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group h-full">
-                <CardContent className="p-6 text-center">
+              <Card className="glass-strong border-primary/20 hover:border-primary/50 transition-all duration-300 group h-full relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <CardContent className="p-6 text-center relative z-10">
                   <motion.div
-                    className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
                     <Cpu className="h-8 w-8 text-primary" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2">Innovation</h3>
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Innovation</h3>
                   <p className="text-muted-foreground">
                     Exploring ML, IoT, and emerging technologies
                   </p>
