@@ -43,7 +43,7 @@ const Hero = () => {
                 <img
                   src={profilePic}
                   alt="Padmesh Bidaye"
-                  className="w-full h-full rounded-full object-cover border-4 border-primary/30 shadow-glow"
+                  className="w-full h-full rounded-full object-cover object-top border-4 border-primary/30 shadow-glow"
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-transparent" />
               </div>
