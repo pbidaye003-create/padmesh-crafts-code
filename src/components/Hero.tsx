@@ -2,6 +2,7 @@ import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import Scene3D from "./Scene3D";
+import profilePic from "@/assets/profile-pic.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -31,6 +32,23 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
+            {/* Profile Picture */}
+            <motion.div
+              className="mb-8 flex justify-center"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
+                <img
+                  src={profilePic}
+                  alt="Padmesh Bidaye"
+                  className="w-full h-full rounded-full object-cover border-4 border-primary/30 shadow-glow"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-transparent" />
+              </div>
+            </motion.div>
+
             {/* Badge */}
             <motion.div
               className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full mb-8"
