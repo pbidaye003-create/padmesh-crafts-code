@@ -8,11 +8,20 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import MagneticButton from "./MagneticButton";
+import emailjs from "@emailjs/browser";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
 
 const Contact = () => {
   const { toast } = useToast();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isLoading, setIsLoading] = useState(false);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -20,13 +29,57 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    
+    // Validate input
+    try {
+      contactSchema.parse(formData);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+      }
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    try {
+      // Initialize EmailJS with Public Key
+      emailjs.init("z3b3nIUd85bFE-C_W");
+      
+      // Send email
+      await emailjs.send(
+        "service_vcndhmh",  // Service ID
+        "template_jwai7up", // Template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }
+      );
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      setFormData({ name: "", email: "", message: "" });
+      
+    } catch (error) {
+      toast({
+        title: "Failed to Send Message",
+        description: "Please try again later or contact me directly via email.",
+        variant: "destructive",
+      });
+      console.error("EmailJS Error:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -149,9 +202,9 @@ const Contact = () => {
                       />
                     </div>
                     <MagneticButton
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isLoading ? "Sending..." : "Send Message"}
                       <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </MagneticButton>
                   </form>
