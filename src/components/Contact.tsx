@@ -90,22 +90,16 @@ const Contact = () => {
       href: "mailto:pbidaye003@gmail.com",
     },
     {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 99870 23127",
-      href: "tel:+919987023127",
-    },
-    {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Padmesh Bidaye",
-      href: "https://linkedin.com/in/padmesh-bidaye",
+      href: "https://linkedin.com/in/padmesh-bidaye-385106374",
     },
     {
       icon: Github,
       label: "GitHub",
       value: "PadmeshBidaye",
-      href: "https://github.com/PadmeshBidaye",
+      href: "https://github.com/pbidaye003-create",
     },
     {
       icon: Instagram,
